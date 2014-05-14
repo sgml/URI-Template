@@ -8,4 +8,4 @@ my $params = [
     hello => 'Hello World!',
 ];
 
-run-tests( &test-templates.assuming(:$params), :tests-per-block(3) );
+run-tests( simple-test &apply-template.assuming(:$params) );
