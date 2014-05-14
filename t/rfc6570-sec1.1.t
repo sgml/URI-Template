@@ -4,21 +4,21 @@ use URI::Template;
 
 my %test-data =
     '/~{username}/' => {
-        '/~fred/' => [ :username<fred> ],
-        '/~mark/' => [ :username<mark> ],
+        '/~fred/' => { :username<fred> },
+        '/~mark/' => { :username<mark> },
     },
     '/dictionary/{term:1}/{term}' => {
-        '/dictionary/c/cat' => [ :term<cat> ],
-        '/dictionary/d/dog' => [ :term<dog> ],
+        '/dictionary/c/cat' => { :term<cat> },
+        '/dictionary/d/dog' => { :term<dog> },
     },
     '/search{?q,lang}' => {
-        '/search?q=cat&lang=en'   => [ :q<cat>,   :lang<en> ],
-        '/search?q=chien&lang=fr' => [ :q<chien>, :lang<fr> ],
+        '/search?q=cat&lang=en'   => { :q<cat>,   :lang<en> },
+        '/search?q=chien&lang=fr' => { :q<chien>, :lang<fr> },
     },
     '/foo{?query,number}' => {
-        '/foo?query=mycelium&number=100' => [ :query<mycelium>, :number<100> ],
-        '/foo?number=100'                => [ :number<100> ],
-        '/foo'                           => [ ],
+        '/foo?query=mycelium&number=100' => { :query<mycelium>, :number<100> },
+        '/foo?number=100'                => { :number<100> },
+        '/foo'                           => { },
     },
 ;
 

@@ -1,12 +1,9 @@
 #!/usr/bin/env perl6
 use lib qw{t/};
 use TestSpecExamples;
-use Test::Corpus;
 
-my $params = [
+test-templates-using-params {
     var   => 'value',
     hello => 'Hello World!',
     path  => '/foo/bar',
-];
-
-run-tests( simple-test &apply-template.assuming(:$params) );
+};

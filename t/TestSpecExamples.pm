@@ -1,8 +1,13 @@
 module TestSpecExamples;
 
 use Test;
+use Test::Corpus;
 use URI::Template;
 
-sub apply-template($in, :$params) is export {
-    URI::Template.new(template => $in).format($params),
+sub test-templates-using-params(%params) is export {
+    run-tests sub ($in, $out, $test) {
+        is  URI::Template.new(template => $in.slurp.chomp).format(%params),
+            $out.slurp.chomp,
+            $test;
+    }
 }
