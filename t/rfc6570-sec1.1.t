@@ -22,7 +22,7 @@ my %test-data =
     },
 ;
 
-plan 2 * [+] %test-data.values».elems;
+plan [+] %test-data.values».elems;
 
 for %test-data.kv -> $template, $data {
     my $t = URI::Template.new(:$template);
