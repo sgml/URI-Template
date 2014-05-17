@@ -25,7 +25,7 @@ my %test-data =
 plan [+] %test-data.values».elems;
 
 for %test-data.kv -> $template, $data {
-    my $t = URI::Template.new(:$template);
+    my $t = URI::Template.new($template);
 
     for %$data.kv -> $uri, $params {
         my $formatted = $t.format($params);
