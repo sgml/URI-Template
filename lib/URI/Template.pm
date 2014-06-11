@@ -17,17 +17,15 @@ method new(Str $template) {
 
 #= Creates a URI by filling in the parameters.
 method format(%params) returns Str {
-    return $.parsed.ast.map({
-        $_ when Str;
-        stringify($_, %params) when Pair;
-    }).join
-}
-
-sub stringify(Pair $_, %params) {
-    fail 'Level 2+ operators NYI' if .key;
-    fail 'Compound values NYI' if .value.elems > 1;
-
-    ~%params{.value}
+    return join q{}, gather for $.parsed.ast {
+        say $_.perl;
+        when Str  { take $_ }
+        when Pair {
+            fail 'Level 2+ operators NYI' if .value;
+            fail 'Compound values NYI' if .key.elems > 1;
+            take ~%params{.key}
+        }
+    }
 }
 
 #= Attempts to parse a list of variables out of a given URI.
