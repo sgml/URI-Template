@@ -1,5 +1,5 @@
 {
-    "name"          : "URI-Template",
+    "name"          : "URI::Template",
     "version"       : "0.0.1",
     "author"        : "github:flussence",
     "description"   : "An implementation of RFC 6570 URI templates",
