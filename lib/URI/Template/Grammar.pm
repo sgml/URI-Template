@@ -4,7 +4,7 @@ grammar URI::Template::Grammar:auth<github:flussence>:ver<0.0.1>;
 
 token TOP               {^ <piece>+ $}
 token  piece            { <literal> | <expr> }
-token   literal         { [ <-[ \s \' \\ '"%<>`{|}' ] -cntrl>
+token   literal         { [ <-[ \s \' \\ "%<>`{|} ] -cntrl>
                           | <.percent> ]+ }
 token   expr            { '{' ~ '}' [ <op>? <var-list>+ % ',' ] }
 token    op             { <op-lv2> | <op-lv3> | <op-reserved> }
